@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default playList-navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"style="display: none" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand .share-btn" href="#"><span class="glyphicon glyphicon-menu-left"></span></a>
+            <h3 class="center-block"style="">现场直播视频</h3>
+        </div>
+    </div>
+</nav>
+<div class="live-data-group">
+    <?php foreach ($data['info'] as $val){
+        ?>
+        <div class="live-container container">
+            <a href="/web/tpl/eventFeatures/eventDetail-<?php echo $val[0]['eventid'];?>.html"><h4><?php echo $val[0]['eventtitle'];?><span class="glyphicon glyphicon-menu-right"></span></h4></a>
+            <ul class="live-data-item">
+                <?php
+                foreach ($val as $v) {
+                    ?>
+                    <li>
+                        <div class="left-list col-xs-6" data-liveid="<?php echo $v['liveid'];?>" data-livetype="<?php echo $v['livetype'];?>">
+                            <a href="/web/qipu/play/360live.php?kw=<?php echo $v['liveid'];?>"><img src="<?php echo $v['liveimg'];?>" alt="">
+                            <i class="play-icon-border"><span class="glyphicon glyphicon-play"></span></i></a>
+                        </div>
+                        <div class="right-list col-xs-6">
+                            <span class="live-text"><?php echo $v['livetitle'];?></span><span class="live-date"><?php echo $v['remark']?></span>
+                        </div>
+                    </li>
+                    <?php
+                }
+                ?>
+            </ul>
+        </div>
+        <?php
+    }?>
+</div>
+<link rel="stylesheet" href="{$data.bdUrl}/css/livelist.css">
+<script></script>
